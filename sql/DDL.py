@@ -51,7 +51,7 @@ cursor=connection.cursor(buffered=True)
 
 
 '''
-The SQL statents categorised as DDL statements are:
+The SQL statents categorized as DDL statements are:
 1. CREATE
 2. DROP
 3. ALTER
@@ -113,23 +113,23 @@ create_db(query)
 
 
 # we first read our database property
-# query='''SELECT * FROM INFORMATION_SCHEMA.SCHEMA_PROPERTIES WHERE SCHEMA_NAME = 'DEMO3' AND PROPERTY_NAME = 'DEFAULT_CHARACTER_SET_NAME' '''
-# query3=''' SHOW CREATE DATABASE DEMO3'''
-# cursor.execute(query3)
-# print("Our created database DEMO3 has the following properties: ")
-# print(cursor.fetchall())
+query='''SELECT * FROM INFORMATION_SCHEMA.SCHEMA_PROPERTIES WHERE SCHEMA_NAME = 'DEMO3' AND PROPERTY_NAME = 'DEFAULT_CHARACTER_SET_NAME' '''
+query3=''' SHOW CREATE DATABASE DEMO3'''
+cursor.execute(query3)
+print("Our created database DEMO3 has the following properties: ")
+print(cursor.fetchall())
 
 
 #since we do see our db is readonly, we alter it to be writable
 
-# query = ''' ALTER DATABASE DEMO3 READ ONLY =1 '''
-# run_query(query)
-# print("Database DEMO3 successfully altered")
+query = ''' ALTER DATABASE DEMO3 READ ONLY =1 '''
+run_query(query)
+print("Database DEMO3 successfully altered")
 
 #now we check our properties again
-# cursor.execute(query3)
-# print("Our created database DEMO3 has the following properties: ")
-# print(cursor.fetchall())
+cursor.execute(query3)
+print("Our created database DEMO3 has the following properties: ")
+print(cursor.fetchall())
 
 
 

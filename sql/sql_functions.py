@@ -23,50 +23,54 @@ def connection_to_server():
 connection=connection_to_server()
 cursor=connection.cursor(buffered=True)
 
-# query='''
+#create our first function that calculates duration of an employees contract
 
-# CREATE FUNCTION YEARS(DATE_JOINED DATE) RETURNS INT DETERMINISTIC
+query='''
 
-# BEGIN
-#     DECLARE current_day DATE;
-#     SELECT current_date() into current_day;
-#     RETURN (YEAR(current_day) - YEAR(DATE_JOINED));
+CREATE FUNCTION YEARS(DATE_JOINED DATE) RETURNS INT DETERMINISTIC
+
+BEGIN
+    DECLARE current_day DATE;
+    SELECT current_date() into current_day;
+    RETURN (YEAR(current_day) - YEAR(DATE_JOINED));
     
-# END
+END
 
 
 
-# '''
+'''
 
-# cursor.execute(query)
+cursor.execute(query)
 
 #we create a new function that determines whether the user deserves a raise according to the number of years served 
 
-# query='''
+query='''
 
-# CREATE FUNCTION RAISE(YEARS_SERVED INT) RETURNS BOOLEAN DETERMINISTIC
+CREATE FUNCTION RAISE(YEARS_SERVED INT) RETURNS BOOLEAN DETERMINISTIC
 
-# BEGIN
-#     DECLARE threshold INT;
-#     DECLARE result BOOLEAN;
-#     SET threshold = 10;
-#     IF YEARS_SERVED >= threshold THEN
+BEGIN
+    DECLARE threshold INT;
+    DECLARE result BOOLEAN;
+    SET threshold = 10;
+    IF YEARS_SERVED >= threshold THEN
     
-#         SET result=TRUE;
+        SET result=TRUE;
     
-#     ELSE
+    ELSE
     
-#         SET result=FALSE;
+        SET result=FALSE;
     
-#     END IF;
+    END IF;
     
-#     RETURN result;
+    RETURN result;
     
     
    
-# END 
-# '''
-# cursor.execute(query)
+END 
+'''
+
+cursor.execute(query)
+
 #now we implement the function on to our table and create a view from it
 
 query='''
